@@ -12,6 +12,6 @@ class Openmarket():
         y,m,d = t[0:3]
         a = datetime.datetime.weekday(datetime.datetime(y,m,d))
         if (a+1>5):
-            print False
+            return False
         else:
-            print a   
+            return a   
