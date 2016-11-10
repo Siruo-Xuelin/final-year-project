@@ -23,10 +23,10 @@ class PriceMatrix():
         
         for i in range(len(stocks)):
             for j in range (len(dates_st)):
-                if (Openmarket.Openmarket(dates_st[j], stocks[i]).judgeTime() == False):
-                    df2.iloc[i,j] = 'None'
-                else:
+                if (Openmarket.Openmarket(dates_st[j], stocks[i]).judgeTime() == True):
                     df2.iloc[i,j] = web.DataReader(stocks[i], 'yahoo', dates_st[j] , dates_st[j]).Close[dates_st[j]]
+                else:
+                    df2.iloc[i,j] = 'None'
 
 
 
