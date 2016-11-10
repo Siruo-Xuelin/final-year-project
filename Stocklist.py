@@ -7,7 +7,7 @@ import Openmarket
 
 class StockList():
     
-    def __init__(self, start, end):
+    def __init__(self):
         df=pd.read_csv('S&P500index.csv')
         stocks = df.iloc[:, 0].tolist()
         volumes=([None]*len(stocks))
@@ -18,7 +18,7 @@ class StockList():
 
 
         for i in range(len(volumes)):
-            if Openmarket.Openmarket(y_time_nyr).judgeWeekend(t=5) == False:
+            if (Openmarket.Openmarket(y_time_nyr, stocks[i]).judgeTime() == False):
                 volumes[i] = 0
             else: 
                 volumes[i] = web.DataReader(stocks[i], 'yahoo', y_time_nyr, y_time_nyr).Volume[y_time_nyr]
